@@ -24,7 +24,3 @@ selected_indices = random.sample(range(0, len(patient_ids)),  int(val_split*len(
 # list_keys = list(wav.keys())
 selected_ids = [patient_ids[idx] for idx in selected_indices]
 print(len(selected_ids))
-
-# dump_data('{}/val_files_real.pkl'.format(data_dir), val_files)
-# dump_data('{}/training_files_real.pkl'.format(data_dir), training_files)
-# dump_data('{}/test_files_real.pkl'.format(data_dir), test_files)

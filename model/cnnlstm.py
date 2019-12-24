@@ -38,10 +38,11 @@ class CNNLSTMModel(Model):
         self.lstm2 = LSTM(128, return_sequences=True, return_state=False, kernel_regularizer=regularizers.l2(0.01),
                           stateful=False)
         self.dropout1 = Dropout(0.5)
-        self.dense1 = TimeDistributed(Dense(_NUM_CLASSES, activation='softmax'))
+        self.dense1 = Dense(_NUM_CLASSES, activation='softmax')
         outputs = self.create_model()
         self.inputs = self.input_layer
         self.outputs = outputs
+        self.build(input_shape)
 
     def create_model(self):
         x = self.bn1(self.input_layer)

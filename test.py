@@ -1,7 +1,6 @@
-import librosa
-import matplotlib.pyplot as plt
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 
-
-wav, sr = librosa.load('wheezing_a.wav', sr=None)
-plt.plot(wav)
-plt.show()
+Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+print(filename)

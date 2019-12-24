@@ -39,7 +39,8 @@ GYRO_FACTOR = 16.4
 
 def generate_viz():
     global sampling_rate
-    wav_path = '/home/hieung1707/projects/respiratory_demo/wheezing_a.wav'
+    wav_path = '../data/RALE dataset/wheezing_a.wav'
+    # wav_path = '//home/hieung1707/projects/respiratory_demo/data/audio_and_txt_files/101_1b1_Al_sc_Meditron.wav'
     if not os.path.exists(wav_path):
         print('File not found: {}'.format(wav_path))
     wav, sr = librosa.load(wav_path, sr=None)
@@ -161,7 +162,7 @@ def send_data():
                 data += struct.pack('f', wav_samples[i])
             sock.sendto(data, client_address)
             sleep_time = hop * 1. / sampling_rate
-            print(sleep_time)
+            # print(sleep_time)
             time.sleep(sleep_time)
             current_idx = (current_idx + hop + 1) % len(viz_logs)
             continue

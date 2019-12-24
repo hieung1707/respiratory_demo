@@ -24,10 +24,12 @@ n_filters = 128
 class_mapping = {
     0: 'crackles',
     1: 'wheeze',
-    2: 'both crackles and wheeze',
+    2: 'both',
     3: 'normal'
 }
 
+existing_labels = list(class_mapping.values())
+
 # file paths
 log_path = '/home/hieung1707/projects/vin_HAR/test_log/config/system_log.txt'
-weights_path = '/home/hieung1707/projects/respiratory_demo/model/weights/convlstm_seq_gfccs_final_2lstm.hdf5'
+weights_path = '/home/hieung1707/projects/respiratory_demo/model/weights/convlstm_seq_cochleagram_final_2lstm_bn.hdf5'

@@ -2,7 +2,7 @@
 import numpy as np
 from scipy.signal import lfilter, lfilter_zi, lfiltic
 # from scikits.talkbox import lpc
-from gfcc.py_lpc import lpc_ref as lpc
+from preprocessing.gfcc.py_lpc import lpc_ref as lpc
 import matplotlib.pyplot as plt
 
 def hz2mel(f):

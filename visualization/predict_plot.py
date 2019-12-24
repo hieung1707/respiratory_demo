@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
 from collections import deque
-import os
-import datetime
 from utils import *
 import threading
-from model.classification_model import Model
+from model.classification_model import PredictionModel
+from preprocessing.feature_extraction import get_extracted_feature
+
 
 duration = int(sampling_rate*displayed_duration)
 info = deque([[0]]*duration, maxlen=duration)
@@ -83,7 +83,7 @@ def get_local_ip():
     return IP
 
 
-class UDPServer:
+class PredictPlot:
     def __init__(self, sock=None, host='0.0.0.0', port=1234, target_ip= (UDP_SERVER_IP, UDP_SERVER_PORT)):
         self.target_ip = target_ip
         if sock is None:
@@ -95,7 +95,7 @@ class UDPServer:
         else:
             self.s = sock
 
-        self.fig = plt.figure(figsize=(15, 7))
+        self.fig = plt.figure(figsize=(10, 7))
         self.max_len = duration
         self.ax_label = self.fig.add_subplot(2, 1, 1)
         self.ax_label.axis('off')
@@ -118,15 +118,12 @@ class UDPServer:
         self.colors = ['blue']
         self.plot_wav = RealtimePlot(self.ax_wav, self.data_wav, self.colors, xlim=(0, self.max_len), ylim=(-1, 1))
         log_folder = 'log'
-        if not os.path.exists(log_folder):
-            os.mkdir(log_folder)
-
         self.last_count = 0
         self.first_time = True
         self.is_updating = False
         self.first_ts = time.time()
         self.total_time = 0
-        self.hop = int(0.335) * sampling_rate
+        self.hop = int(displayed_duration * sampling_rate)
         self.total_count = 0
         self.last_ts = 0
         self.max_gyr = 0
@@ -141,7 +138,7 @@ class UDPServer:
         self.has_timestamp = False
         self.start_bytes, self.end_bytes = self.get_package_struct()
         # model
-        self.model = Model()
+        self.model = PredictionModel()
 
     def get_package_struct(self):
         start_bytes = []
@@ -169,10 +166,17 @@ class UDPServer:
 
         return start_bytes, end_bytes
     
-    def update_predict(self, info):
-        temp_pred = self.model.predict_one_label(info)
-        if temp_pred == 3:
-            temp_pred = ''
+    def update_predict(self):
+        info_array = np.array(self.info)
+        info_array = np.squeeze(info_array, axis=-1)
+        # info_array = np.expand_dims(info_array, axis=-1)
+        features = get_extracted_feature(info_array, feature_type='cochleagram')
+        features = np.expand_dims(features, axis=0)
+
+        temp_pred = self.model.predict_one_label(features)
+        self.nsamples_since_last_predict = 0
+        # if temp_pred == 3:
+        #     temp_pred = ''
         # print(temp_pred)
         self.last_prediction = temp_pred
         # if temp_pred != self.last_prediction:
@@ -225,8 +229,10 @@ class UDPServer:
         if self.last_count == self.total_count:
             return self.plot_wav.lineplot + [self.text]
         if self.nsamples_since_last_predict >= self.hop:
-            predict_thread = threading.Thread(target=self.update_predict, args=self.info)
-            predict_thread.start()
+            if not self.is_predicting:
+                self.is_predicting = True
+                predict_thread = threading.Thread(target=self.update_predict)
+                predict_thread.start()
         self.last_count = self.total_count
         self.text.set_text(self.last_prediction)
         # bytes received from watch, 16 for custom hardware and 56 for apple watch series 3
@@ -247,7 +253,7 @@ class UDPServer:
 
 
 if __name__ == "__main__":
-    server = UDPServer(sock=None, host=UDP_CLIENT_IP, port=UDP_CLIENT_PORT)
+    server = PredictPlot(sock=None, host=UDP_CLIENT_IP, port=UDP_CLIENT_PORT)
     t = threading.Thread(target=server.read_data)
     t.start()
     server.start_plotting()

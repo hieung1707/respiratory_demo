@@ -1,12 +1,12 @@
 # coding = utf-8
 import numpy as np
 # from scipy.io import wavfile
-from gfcc.feature_extractor import cochleagram_extractor
+from preprocessing.gfcc.feature_extractor import cochleagram_extractor
 # from matplotlib import pyplot as plt
 import librosa
 # from speech_utils import read_sphere_wav
 import matplotlib.pyplot as plt
-from gfcc.mfcc_extractor import get_mfcc
+from preprocessing.gfcc.mfcc_extractor import get_mfcc
 
 
 def gfcc_extractor(cochleagram, gf_channel, cc_channels):
