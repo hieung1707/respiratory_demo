@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6422be0e-9cc4-4252-be20-e4bd0fe0d7c0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/classification_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/classification_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/udp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/udp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/visualization/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/main_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/visualization/predict_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/predict_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/visualization/static_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/static_plot.py" afterDir="false" />
-    </list>
+    <list default="true" id="6422be0e-9cc4-4252-be20-e4bd0fe0d7c0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
