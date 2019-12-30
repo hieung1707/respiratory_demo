@@ -15,14 +15,14 @@ class MainMenuInterface():
         self.window = Tk()
         self.window.title('Main menu')
         self.btn_analyze = Button(self.window, text="Analyze File", font=("Arial Bold", 24), height=1, width=15)
-        self.btn_realtime = Button(self.window, text="Realtime", font=("Arial Bold", 24), height=1, width=15)
+        # self.btn_realtime = Button(self.window, text="Realtime", font=("Arial Bold", 24), height=1, width=15)
         self.btn_exit = Button(self.window, text="Exit", font=("Arial Bold", 24), height=1, width=15)
         self.create_interface()
         self.setup_listeners()
 
     def create_interface(self):
         self.btn_analyze.grid(column=0, row=0, padx=20, pady=20)
-        self.btn_realtime.grid(column=0, row=1, padx=20, pady=20)
+        # self.btn_realtime.grid(column=0, row=1, padx=20, pady=20)
         self.btn_exit.grid(column=0, row=2, padx=20, pady=20)
         w = self.window.winfo_reqwidth()
         h = self.window.winfo_reqheight()
@@ -33,7 +33,7 @@ class MainMenuInterface():
 
     def setup_listeners(self):
         self.btn_analyze.config(command=lambda :self.btn_click(mode=0))
-        self.btn_realtime.config(command=lambda :self.btn_click(mode=1))
+        # self.btn_realtime.config(command=lambda :self.btn_click(mode=1))
         self.btn_exit.config(command=lambda :self.btn_click(mode=2))
 
     def btn_click(self, mode):
@@ -46,7 +46,9 @@ class MainMenuInterface():
 
     def analyze_click(self):
         Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
-        filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
+        filename = askopenfilename(initialdir='/home/hieung1707/projects/respiratory_demo/data/test_files')  # show an "Open" dialog box and return the path to the selected file
+        if filename == ():
+            return
         if not filename.endswith('.wav'):
             messagebox.showerror('Extension error', 'Only .wav extension allowed')
         self.window.destroy()

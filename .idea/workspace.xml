@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6422be0e-9cc4-4252-be20-e4bd0fe0d7c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/classification_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/classification_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/cnnlstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/cnnlstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/predict_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing/gfcc/feature_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/gfcc/feature_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing/gfcc/gfcc_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/gfcc/gfcc_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing/split_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/split_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/udp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/udp_server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tracheal.wav" beforeDir="false" afterPath="$PROJECT_DIR$/data/RALE dataset/tracheal.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/udp_server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vesicular.wav" beforeDir="false" afterPath="$PROJECT_DIR$/data/RALE dataset/vesicular.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheezing_a.wav" beforeDir="false" afterPath="$PROJECT_DIR$/data/RALE dataset/wheezing_a.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualization/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/main_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualization/predict_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/predict_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualization/static_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/static_plot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +36,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vin_HAR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -57,6 +51,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main_menu">
+    <configuration name="classification_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="respiratory_demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/model" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model/classification_model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main_menu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="respiratory_demo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -70,27 +85,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visualization/main_menu.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="predict_plot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="respiratory_demo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/visualization" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visualization/predict_plot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.udp_server" />
         <item itemvalue="Python.main_menu" />
-        <item itemvalue="Python.predict_plot" />
+        <item itemvalue="Python.classification_model" />
         <item itemvalue="Python.static_plot" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.udp_server" />
       </list>
     </recent_temporary>
   </component>
@@ -202,34 +196,38 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="671" y="344" key="#com.intellij.fileTypes.FileTypeChooser/65.24.1855.1056@65.24.1855.1056" timestamp="1577198219918" />
-    <state x="780" y="297" key="FileChooserDialogImpl" timestamp="1577210792993">
+    <state x="780" y="297" key="FileChooserDialogImpl" timestamp="1577413674278">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="780" y="297" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1577210792993" />
-    <state width="1832" height="315" key="GridCell.Tab.0.bottom" timestamp="1577220886638">
+    <state x="780" y="297" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1577413674278" />
+    <state width="1832" height="315" key="GridCell.Tab.0.bottom" timestamp="1577352722972">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1832" height="315" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1577220886638" />
-    <state width="1832" height="315" key="GridCell.Tab.0.center" timestamp="1577220886638">
+    <state width="1832" height="315" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1577352722972" />
+    <state width="1832" height="315" key="GridCell.Tab.0.center" timestamp="1577352722972">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1832" height="315" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1577220886638" />
-    <state width="1832" height="315" key="GridCell.Tab.0.left" timestamp="1577220886637">
+    <state width="1832" height="315" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1577352722972" />
+    <state width="1832" height="315" key="GridCell.Tab.0.left" timestamp="1577352722971">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1832" height="315" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1577220886637" />
-    <state width="1832" height="315" key="GridCell.Tab.0.right" timestamp="1577220886638">
+    <state width="1832" height="315" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1577352722971" />
+    <state width="1832" height="315" key="GridCell.Tab.0.right" timestamp="1577352722972">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1832" height="315" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1577220886638" />
+    <state width="1832" height="315" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1577352722972" />
     <state x="165" y="96" width="1655" height="884" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1577073480527">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="165" y="96" width="1655" height="884" key="com.intellij.history.integration.ui.views.FileHistoryDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1577073480527" />
-    <state x="653" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1577194942250">
+    <state x="653" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1577413275385">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="653" y="366" key="com.intellij.ide.util.TipDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1577194942250" />
+    <state x="653" y="366" key="com.intellij.ide.util.TipDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1577413275385" />
+    <state x="661" y="232" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577239784589">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="661" y="232" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/65.24.1855.1056@65.24.1855.1056" timestamp="1577239784589" />
     <state x="655" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1577214368460">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>

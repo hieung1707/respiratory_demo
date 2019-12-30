@@ -21,6 +21,7 @@ class StaticPlot():
         self.features = None
         self.frame_lvl_preds = None
         self.video_lvl_preds = None
+        self.ground_truth = None
 
     def analyze_and_visualize(self, file_path):
         # raw data
@@ -30,13 +31,13 @@ class StaticPlot():
         plt.title('Raw sound')
 
         # filtered data
-        ax2 = plt.subplot(323, sharex=ax1)
+        # ax2 = plt.subplot(323, sharex=ax1)
         self.filter_wav()
-        plt.plot(self.filtered_wav)
-        plt.title('Heart sound filtered sound')
+        # plt.plot(self.filtered_wav)
+        # plt.title('Heart sound filtered sound')
 
         # plot legend
-        ax3 = plt.subplot(325)
+        ax3 = plt.subplot(323)
         plt.legend([mpatches.Patch(color=b) for b in self.cMap.colors], existing_labels, loc='center', prop={'size': 20})
         plt.axis('off')
         plt.title('Description')
@@ -60,12 +61,47 @@ class StaticPlot():
         plt.pcolormesh(self.video_lvl_preds, cmap=self.cMap)
         plt.clim(0, 4)
         plt.title('Video lvl prediction')
+
+        if 'audio_and_txt_files' in file_path or 'test_files' in file_path:
+            file_path = file_path[:-3] + 'txt'
+            self.get_ground_truth(file_path)
+            ax2 = plt.subplot(325)
+            # self.filter_wav()
+            plt.pcolormesh(self.ground_truth, cmap=self.cMap)
+            plt.clim(0, 4)
+            plt.title('Ground truth')
         plt.show()
+
+    def get_ground_truth(self, file_path):
+        assert self.wav is not None
+        assert self.features is not None
+        file_labels = read_labels(file_path)
+        start_indices = []
+        end_indces = []
+        labels = []
+        for label in file_labels:
+            start_indices.append(label['start'])
+            end_indces.append(label['end'])
+            labels.append(label['label'])
+        labels_np = np.full(self.wav.shape, 4)
+        for i in range(len(start_indices)):
+            labels_np[start_indices[i]:end_indces[i]] = labels[i]
+        print(np.unique(labels_np, return_counts=True))
+        self.ground_truth = np.full(self.features.shape[1], 4)
+        idx = 0
+        for i in range(0, labels_np.shape[0], int(sampling_rate * 0.01)):
+            label_temp = labels_np[i: i+int((0.025*sampling_rate))]
+            if label_temp.shape[0] != int(0.025*sampling_rate):
+                break
+            real_label = np.argmax(np.bincount(label_temp))
+            self.ground_truth[idx] = real_label
+            idx += 1
+        self.ground_truth = np.expand_dims(self.ground_truth, axis=0)
 
     def load_wav(self, file_path):
         self.wav, sr = librosa.load(file_path, sr=None)
         if sr != sampling_rate:
-            print('wrong sample rate')
+            # print('wrong sample rate')
             self.wav = resample(self.wav, sr, sampling_rate)
 
     def filter_wav(self):

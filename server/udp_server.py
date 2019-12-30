@@ -39,7 +39,8 @@ GYRO_FACTOR = 16.4
 
 def generate_viz():
     global sampling_rate
-    wav_path = '../data/RALE dataset/wheezing_a.wav'
+    # wav_path = '../data/RALE dataset/wheezing_a.wav'
+    wav_path = '/home/hieung1707/projects/respiratory_demo/data/audio_and_txt_files/107_2b3_Ll_mc_AKGC417L.wav'
     # wav_path = '//home/hieung1707/projects/respiratory_demo/data/audio_and_txt_files/101_1b1_Al_sc_Meditron.wav'
     if not os.path.exists(wav_path):
         print('File not found: {}'.format(wav_path))

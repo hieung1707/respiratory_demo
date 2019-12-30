@@ -123,7 +123,7 @@ class PredictPlot:
         self.is_updating = False
         self.first_ts = time.time()
         self.total_time = 0
-        self.hop = int(displayed_duration * sampling_rate)
+        self.hop = int(displayed_duration //4 * sampling_rate)
         self.total_count = 0
         self.last_ts = 0
         self.max_gyr = 0
@@ -131,7 +131,7 @@ class PredictPlot:
         self.nsamples_since_last_predict = 0
         self.rcv_bytes = 6 + hop * 4
         self.last_prediction = ''
-        self.info = deque([[0]*6]*self.max_len, maxlen=self.max_len)
+        self.info = deque([[0]]*self.max_len, maxlen=self.max_len)
         self.is_running = True
         self.is_predicting = False
         self.has_header = True
@@ -166,8 +166,8 @@ class PredictPlot:
 
         return start_bytes, end_bytes
     
-    def update_predict(self):
-        info_array = np.array(self.info)
+    def update_predict(self, info):
+        info_array = np.array(info)
         info_array = np.squeeze(info_array, axis=-1)
         # info_array = np.expand_dims(info_array, axis=-1)
         features = get_extracted_feature(info_array, feature_type='cochleagram')
@@ -175,14 +175,7 @@ class PredictPlot:
 
         temp_pred = self.model.predict_one_label(features)
         self.nsamples_since_last_predict = 0
-        # if temp_pred == 3:
-        #     temp_pred = ''
-        # print(temp_pred)
         self.last_prediction = temp_pred
-        # if temp_pred != self.last_prediction:
-        #     self.last_prediction = temp_pred
-        #     self.text.set_text(self.last_prediction)
-        #     self.fig.canvas.draw()
         self.is_predicting = False
 
     def read_data(self):
@@ -220,7 +213,6 @@ class PredictPlot:
                 self.nsamples_since_last_predict += total_length
 
                 if curr_time - self.last_ts >= 1.:
-                    # print(self.diff, self.total_count * 1. / (self.total_time + 1e-16), curr_time - self.last_ts)
                     self.last_ts = curr_time
                     self.diff = 0
                 # self.is_updating = False
@@ -231,7 +223,7 @@ class PredictPlot:
         if self.nsamples_since_last_predict >= self.hop:
             if not self.is_predicting:
                 self.is_predicting = True
-                predict_thread = threading.Thread(target=self.update_predict)
+                predict_thread = threading.Thread(target=self.update_predict, args=(self.info, ))
                 predict_thread.start()
         self.last_count = self.total_count
         self.text.set_text(self.last_prediction)

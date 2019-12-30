@@ -47,7 +47,7 @@ class PredictionModel:
         self.model = Model(inputs=input_layer, outputs=x)
         self.model.load_weights(weights_path)
         self.model._make_predict_function()
-        self.threshold = 0.5
+        self.threshold = 0.0
 
     def predict(self, x):
         x = np.expand_dims(x, axis=-1)
@@ -62,6 +62,7 @@ class PredictionModel:
 
     def predict_one_label(self, x):
         labels = self.predict(x)
+        print(labels)
         labels = np.squeeze(labels, axis=0)
         return class_mapping[np.argmax(np.bincount(labels))]
 
